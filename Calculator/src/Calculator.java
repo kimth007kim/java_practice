@@ -1,5 +1,5 @@
-import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -52,8 +52,10 @@ public class Calculator extends JFrame {
 		}
 
 		JButton s1 = new JButton("+");
+		s1.setSize(200,200);
 		s1.addMouseListener(new MouseAdd());
 		jp.add(s1);
+		
 		
 		JButton s2 = new JButton("-");
 		s2.addMouseListener(new MouseAdd());
@@ -69,18 +71,18 @@ public class Calculator extends JFrame {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-
 				String t =result.toString();
 				try {
 					Object p= engine.eval(t);
 					jf.setText(p.toString());
-					
+					result.delete(0, result.length());
+				
+										
 				} catch (ScriptException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-			
+
 			}
 		
 		});
@@ -92,8 +94,8 @@ public class Calculator extends JFrame {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(result.length()>0) {
-					jf.setBackground(Color.black);
-					result.charAt(result.length()-1);
+//					jf.setBackground(Color.black);
+					result.delete(result.length()-1,result.length());
 					jf.setText(result.toString());
 				}
 			}
@@ -101,6 +103,17 @@ public class Calculator extends JFrame {
 		});
 		jp.add(del);
 		JButton AC = new JButton("AC");
+		AC.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(result.length()>0) {
+					result.delete(0,result.length());
+					jf.setText(result.toString());
+				}
+			}
+			
+		});
 		jp.add(AC);
 
 		setSize(500, 800);
