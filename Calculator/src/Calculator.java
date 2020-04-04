@@ -29,7 +29,7 @@ public class Calculator extends JFrame {
 
 		result.append("");
 		JPanel jp = new JPanel();
-		jp.setLayout(new GridLayout(4, 0, 10, 10));
+		jp.setLayout(new GridLayout(0, 4, 10, 10));
 
 		p.add(jf);
 		p.add(jp);
@@ -52,7 +52,7 @@ public class Calculator extends JFrame {
 		}
 
 		JButton s1 = new JButton("+");
-		s1.setSize(200,200);
+		s1.setSize(125,125);
 		s1.addMouseListener(new MouseAdd());
 		jp.add(s1);
 		
