@@ -1,0 +1,7 @@
+Thread 와 Runnable
+
+Thread클래스
+Runnable 인터페이스
+인터페이스일 경우에는 다른클래스를 상속받을수 있다. 
+그래서 대부분의 상황에서 Thread 보다는 Runnable을 자주사용함.
+
